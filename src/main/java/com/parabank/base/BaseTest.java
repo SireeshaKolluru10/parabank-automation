@@ -14,7 +14,7 @@ import java.util.Properties;
 
 public class BaseTest {
 
-    protected WebDriver driver;
+    public WebDriver driver;
     protected static Properties config = new Properties();
 
     static {

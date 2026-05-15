@@ -19,7 +19,7 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = "//p[@class='error']")
     private WebElement errorMessage;
 
-    @FindBy(xpath = "2")
+    @FindBy(xpath = "//h1[@class='title']")
     private WebElement pageTitle;
 
     public LoginPage(WebDriver driver) {
