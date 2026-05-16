@@ -25,7 +25,7 @@ public class LoginTest extends BaseTest {
     @Test(priority = 2, description = "Verify error message with invalid credentials")
     public void invalidLoginTest() {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login("invalidUser", "wrongPassword");
+        loginPage.login(Constants.INVALID_USERNAME, Constants.INVALID_PASSWORD);
 
         Assert.assertTrue(loginPage.isErrorDisplayed(),
             "Error message not displayed for invalid login");

@@ -5,6 +5,8 @@ public class Constants {
     // Parabank credentials
     public static final String VALID_USERNAME = "john";
     public static final String VALID_PASSWORD = "demo";
+    public static final String INVALID_USERNAME ="invaliduser";
+    public static final String INVALID_PASSWORD="invalidpassword";
 
     // Page titles
     public static final String ACCOUNTS_PAGE_TITLE = "Accounts Overview";
