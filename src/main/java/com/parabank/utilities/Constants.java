@@ -2,7 +2,7 @@ package com.parabank.utilities;
 
 public class Constants {
 
-    // Parabank default credentials
+    // Parabank credentials
     public static final String VALID_USERNAME = "john";
     public static final String VALID_PASSWORD = "demo";
 
@@ -10,6 +10,25 @@ public class Constants {
     public static final String ACCOUNTS_PAGE_TITLE = "Accounts Overview";
 
     // Error messages
-    public static final String INVALID_LOGIN_ERROR = 
+    public static final String INVALID_LOGIN_ERROR =
         "The username and password could not be verified.";
+
+    // API base URL
+    public static final String API_BASE_URL =
+        "https://parabank.parasoft.com/parabank/services/bank";
+ // Customer details from API response
+    public static final String CUSTOMER_ID = "12212";
+    public static final String PRIMARY_ACCOUNT_ID = "12345";
+
+    // Customer name for assertions
+    public static final String CUSTOMER_FIRST_NAME = "John";
+    public static final String CUSTOMER_LAST_NAME = "Smith";
+
+    // DB connection details — Parabank uses HSQLDB
+    public static final String DB_URL =
+        "jdbc:hsqldb:hsql://parabank.parasoft.com/parabank";
+    public static final String DB_USERNAME = "sa";
+    public static final String DB_PASSWORD = "";
+    public static final String DB_DRIVER =
+        "org.hsqldb.jdbcDriver";
 }

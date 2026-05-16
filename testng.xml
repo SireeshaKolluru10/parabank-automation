@@ -2,14 +2,20 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Parabank Automation Suite" verbose="1">
 
-    <!-- Wire listener — runs automatically for every test -->
     <listeners>
-        <listener class-name="com.parabank.listeners.TestListener"/>
+        <listener class-name=
+            "com.parabank.listeners.TestListener"/>
     </listeners>
 
     <test name="Login Tests">
         <classes>
             <class name="com.parabank.tests.LoginTest"/>
+        </classes>
+    </test>
+
+    <test name="API Tests">
+        <classes>
+            <class name="com.parabank.tests.APITest"/>
         </classes>
     </test>
 

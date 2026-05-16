@@ -79,7 +79,25 @@
     <artifactId>commons-io</artifactId>
     <version>2.15.1</version>
 </dependency>
+<!-- REST Assured XML path support -->
+<dependency>
+    <groupId>io.rest-assured</groupId>
+    <artifactId>xml-path</artifactId>
+    <version>5.4.0</version>
+</dependency>
 
+<!-- REST Assured JSON path support -->
+<dependency>
+    <groupId>io.rest-assured</groupId>
+    <artifactId>json-path</artifactId>
+    <version>5.4.0</version>
+</dependency>
+<!-- HSQLDB driver for Parabank DB connection -->
+<dependency>
+    <groupId>org.hsqldb</groupId>
+    <artifactId>hsqldb</artifactId>
+    <version>2.7.2</version>
+</dependency>
   </dependencies>
 
   <build>
