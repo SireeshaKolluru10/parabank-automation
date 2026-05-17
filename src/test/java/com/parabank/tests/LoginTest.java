@@ -32,14 +32,6 @@ public class LoginTest extends BaseTest {
 
 		    loginPage.login(fakeUsername, fakePassword);
 
-		    // Debug — print page source to see what CI renders
-		    System.out.println("Current URL: "
-		        + driver.getCurrentUrl());
-		    System.out.println("Page source snippet: "
-		        + driver.getPageSource()
-		        .substring(0, Math.min(
-		            driver.getPageSource().length(), 2000)));
-
 		    Assert.assertTrue(loginPage.isErrorDisplayed(),
 		        "Error message not displayed for invalid login");
 		}
