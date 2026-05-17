@@ -1,49 +1,43 @@
 package com.parabank.base;
 
+import com.parabank.utilities.ConfigReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.time.Duration;
-import java.util.Properties;
 
 public class BaseTest {
 
-    public WebDriver driver;
-    protected static Properties config = new Properties();
+	public WebDriver driver;
 
-    static {
-        try {
-            FileInputStream fis = new FileInputStream(
-                "src/test/resources/config.properties");
-            config.load(fis);
-        } catch (IOException e) {
-            throw new RuntimeException(
-                "config.properties file not found", e);
-        }
-    }
+	@BeforeMethod
+	public void setUp() {
+	    WebDriverManager.chromedriver().setup();
+	    ChromeOptions options = new ChromeOptions();
+	    options.addArguments("--start-maximized");
 
-    @BeforeMethod
-    public void setUp() {
-        WebDriverManager.chromedriver().setup();
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--start-maximized");
-        driver = new ChromeDriver(options);
-        driver.manage().timeouts()
-            .implicitlyWait(Duration.ofSeconds(
-                Integer.parseInt(config.getProperty("implicitWait"))));
-        driver.get(config.getProperty("baseUrl"));
-    }
+	    // Run headless on CI pipeline
+	    String headless = System.getProperty("headless", "false");
+	    if (headless.equals("true")) {
+	        options.addArguments("--headless");
+	        options.addArguments("--no-sandbox");
+	        options.addArguments("--disable-dev-shm-usage");
+	        options.addArguments("--window-size=1920,1080");
+	    }
 
-    @AfterMethod
-    public void tearDown() {
-        if (driver != null) {
-            driver.quit();
-        }
-    }
+	    driver = new ChromeDriver(options);
+	    driver.manage().timeouts()
+	        .implicitlyWait(Duration.ofSeconds(
+	            ConfigReader.getInt("implicitWait")));
+	    driver.get(ConfigReader.get("baseUrl"));
+	}
+	@AfterMethod
+	public void tearDown() {
+		if (driver != null) {
+			driver.quit();
+		}
+	}
 }

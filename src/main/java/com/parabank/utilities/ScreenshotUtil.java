@@ -12,22 +12,19 @@ import java.util.Date;
 
 public class ScreenshotUtil {
 
-    public static String captureScreenshot(WebDriver driver, 
-                                           String testName) {
-        String timestamp = new SimpleDateFormat("ddMMyyyy_HHmmss")
-            .format(new Date());
-        String screenshotName = testName + "_" + timestamp + ".png";
-        String screenshotPath = "screenshots/" + screenshotName;
+	public static String captureScreenshot(WebDriver driver, String testName) {
+		String timestamp = new SimpleDateFormat("ddMMyyyy_HHmmss").format(new Date());
+		String screenshotName = testName + "_" + timestamp + ".png";
+		String screenshotPath = "screenshots/" + screenshotName;
 
-        try {
-            File source = ((TakesScreenshot) driver)
-                .getScreenshotAs(OutputType.FILE);
-            File destination = new File(screenshotPath);
-            FileUtils.copyFile(source, destination);
-        } catch (IOException e) {
-            System.out.println("Screenshot failed: " + e.getMessage());
-        }
+		try {
+			File source = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+			File destination = new File(screenshotPath);
+			FileUtils.copyFile(source, destination);
+		} catch (IOException e) {
+			System.out.println("Screenshot failed: " + e.getMessage());
+		}
 
-        return screenshotPath;
-    }
+		return screenshotPath;
+	}
 }

@@ -7,21 +7,21 @@ import org.openqa.selenium.support.FindBy;
 
 public class AccountsPage extends BasePage {
 
-    @FindBy(xpath = "//h1[@class='title']")
-    private WebElement pageTitle;
+	@FindBy(xpath = "//h1[@class='title']")
+	private WebElement pageTitle;
 
-    @FindBy(linkText = "Log Out")
-    private WebElement logoutLink;
+	@FindBy(linkText = "Log Out")
+	private WebElement logoutLink;
 
-    public AccountsPage(WebDriver driver) {
-        super(driver);
-    }
+	public AccountsPage(WebDriver driver) {
+		super(driver);
+	}
 
-    public String getPageTitle() {
-        return getText(pageTitle);
-    }
+	public String getPageTitle() {
+		return getText(pageTitle);
+	}
 
-    public boolean isLogoutDisplayed() {
-        return isDisplayed(logoutLink);
-    }
+	public boolean isLogoutDisplayed() {
+		return isDisplayed(logoutLink);
+	}
 }
