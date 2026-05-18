@@ -1,15 +1,18 @@
 package com.parabank.tests;
 
-import com.parabank.utilities.APIUtil;
-import com.parabank.utilities.Constants;
-import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import com.parabank.utilities.APIUtil;
+import com.parabank.utilities.Constants;
+import com.parabank.utilities.RetryAnalyser;
+
+import io.restassured.response.Response;
 
 public class APITest {
 
 	// Test 1 - Verify login API returns 200 and correct customer
-	@Test(priority = 1, description = "Verify login API returns 200 and correct customer data")
+	@Test(priority = 1, description = "Verify login API returns 200 and correct customer data",retryAnalyzer = RetryAnalyser.class)
 	public void verifyLoginAPI() {
 		Response response = APIUtil.get("/login/" + Constants.VALID_USERNAME + "/" + Constants.VALID_PASSWORD);
 
@@ -27,7 +30,7 @@ public class APITest {
 	}
 
 	// Test 2 - Verify get accounts returns correct accounts
-	@Test(priority = 2, description = "Verify get accounts API returns accounts list")
+	@Test(priority = 2, description = "Verify get accounts API returns accounts list",retryAnalyzer = RetryAnalyser.class)
 	public void verifyGetAccountsAPI() {
 		Response response = APIUtil.get("/customers/" + Constants.CUSTOMER_ID + "/accounts");
 
@@ -46,7 +49,7 @@ public class APITest {
 	}
 
 	// Test 3 - Verify invalid login returns 400
-	@Test(priority = 3, description = "Verify invalid login API returns 400")
+	@Test(priority = 3, description = "Verify invalid login API returns 400",retryAnalyzer = RetryAnalyser.class)
 	public void verifyInvalidLoginAPI() {
 		Response response = APIUtil.get("/login/wrongUser/wrongPass");
 

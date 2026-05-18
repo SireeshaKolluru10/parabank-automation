@@ -1,17 +1,18 @@
 package com.parabank.tests;
 
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
 import com.parabank.base.BaseTest;
 import com.parabank.pages.AccountsPage;
 import com.parabank.pages.LoginPage;
 import com.parabank.utilities.Constants;
 import com.parabank.utilities.FakerUtil;
-
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import com.parabank.utilities.RetryAnalyser;
 
 public class LoginTest extends BaseTest {
 
-	@Test(priority = 1, description = "Verify successful login with valid credentials")
+	@Test(priority = 1, description = "Verify successful login with valid credentials",retryAnalyzer = RetryAnalyser.class)
 	public void validLoginTest() {
 		LoginPage loginPage = new LoginPage(driver);
 		loginPage.login(Constants.VALID_USERNAME, Constants.VALID_PASSWORD);
@@ -23,7 +24,7 @@ public class LoginTest extends BaseTest {
 	}
 
 	@Test(priority = 2,
-		      description = "Verify error with invalid credentials")
+		      description = "Verify error with invalid credentials",retryAnalyzer = RetryAnalyser.class)
 		public void invalidLoginTest() {
 		    LoginPage loginPage = new LoginPage(driver);
 
@@ -36,10 +37,10 @@ public class LoginTest extends BaseTest {
 		        "Error message not displayed for invalid login");
 		}
 
-	@Test(priority = 3, description = "Verify error message when fields are empty")
+	@Test(priority = 3, description = "Verify error message when fields are empty",retryAnalyzer = RetryAnalyser.class)
 	public void emptyFieldsLoginTest() {
 		LoginPage loginPage = new LoginPage(driver);
-		loginPage.login("", "");
+		loginPage.login("","");
 
 		Assert.assertTrue(loginPage.isErrorDisplayed(), "Error message not displayed for empty fields");
 	}
