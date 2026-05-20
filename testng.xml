@@ -12,6 +12,13 @@
             <class name="com.parabank.tests.LoginTest"/>
         </classes>
     </test>
+    
+     <test name="Registration Tests">
+        <classes>
+            <class name=
+                "com.parabank.tests.RegistrationTest"/>
+        </classes>
+    </test>
 
     <test name="API Tests">
         <classes>
