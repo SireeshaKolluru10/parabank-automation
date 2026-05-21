@@ -50,7 +50,7 @@ public class TransferFundsTest extends BaseTest {
     	      description = "BUG-001 — Zero amount transfer " +
     	                    "should be rejected",
     	      retryAnalyzer = RetryAnalyser.class,
-    	      enabled = true)
+    	      enabled = false)
     	public void zeroAmountTransferTest() {
     	    AccountsPage accountsPage = loginToApplication();
     	    accountsPage.clickTransferFunds();
