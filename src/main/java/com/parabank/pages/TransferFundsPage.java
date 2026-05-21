@@ -57,8 +57,13 @@ public class TransferFundsPage extends BasePage {
         click(transferButton);
     }
 
-    public void transferFunds(String amount) {
+    public void transferFunds(
+            String amount,
+            String fromAccount,
+            String toAccount) {
         enterAmount(amount);
+        selectFromAccount(fromAccount);
+        selectToAccount(toAccount);
         clickTransfer();
     }
 

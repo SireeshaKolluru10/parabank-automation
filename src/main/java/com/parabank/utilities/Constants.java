@@ -64,6 +64,11 @@ public class Constants {
 	public static final String TRANSFER_SUCCESS =
 	    "Transfer Complete!";
 
+	// Account IDs for transfer tests
+	public static final String SECONDARY_ACCOUNT_ID
+	    = "12456";
+	public static final String TERTIARY_ACCOUNT_ID
+	    = "12567";
 	// Transfer amounts
 	public static final String VALID_TRANSFER_AMOUNT
 	    = "100.00";

@@ -33,7 +33,9 @@ public class TransferFundsTest extends BaseTest {
             new TransferFundsPage(driver);
 
         transferFundsPage.transferFunds(
-            Constants.VALID_TRANSFER_AMOUNT);
+        		Constants.VALID_TRANSFER_AMOUNT,
+        	    Constants.PRIMARY_ACCOUNT_ID,
+        	    Constants.SECONDARY_ACCOUNT_ID);
 
         Assert.assertTrue(
             transferFundsPage.isTransferSuccessful(),
@@ -45,26 +47,31 @@ public class TransferFundsTest extends BaseTest {
 
     // Test 2 — Zero amount transfer
     @Test(priority = 2,
-          description = "Verify error for zero " +
-                        "amount transfer",
-          retryAnalyzer = RetryAnalyser.class)
-    public void zeroAmountTransferTest() {
-        AccountsPage accountsPage = loginToApplication();
-        accountsPage.clickTransferFunds();
+    	      description = "BUG-001 — Zero amount transfer " +
+    	                    "should be rejected",
+    	      retryAnalyzer = RetryAnalyser.class,
+    	      enabled = true)
+    	public void zeroAmountTransferTest() {
+    	    AccountsPage accountsPage = loginToApplication();
+    	    accountsPage.clickTransferFunds();
 
-        TransferFundsPage transferFundsPage =
-            new TransferFundsPage(driver);
+    	    TransferFundsPage transferFundsPage =
+    	        new TransferFundsPage(driver);
 
-        transferFundsPage.transferFunds(
-            Constants.ZERO_TRANSFER_AMOUNT);
+    	    transferFundsPage.transferFunds(
+    	        Constants.ZERO_TRANSFER_AMOUNT,
+    	        Constants.PRIMARY_ACCOUNT_ID,
+    	        Constants.SECONDARY_ACCOUNT_ID);
 
-        Assert.assertFalse(
-            transferFundsPage.isTransferSuccessful(),
-            "Zero amount transfer should not succeed");
-
-        System.out.println(
-            "Zero amount transfer test passed");
-    }
+    	    // BUG-001 — Zero amount transfer should be
+    	    // rejected but Parabank allows it.
+    	    // Test intentionally fails to flag this defect.
+    	    // Raised in BugReport.md
+    	    Assert.assertFalse(
+    	        transferFundsPage.isTransferSuccessful(),
+    	        "BUG-001: Zero amount transfer should " +
+    	        "not be allowed");
+    	}
 
     // Test 3 — Empty amount transfer
     @Test(priority = 3,
@@ -78,7 +85,9 @@ public class TransferFundsTest extends BaseTest {
         TransferFundsPage transferFundsPage =
             new TransferFundsPage(driver);
 
-        transferFundsPage.transferFunds("");
+        transferFundsPage.transferFunds(  "",
+        	    Constants.PRIMARY_ACCOUNT_ID,
+        	    Constants.SECONDARY_ACCOUNT_ID);
 
         Assert.assertFalse(
             transferFundsPage.isTransferSuccessful(),

@@ -15,17 +15,16 @@ public class OpenAccountPage extends BasePage {
     @FindBy(id = "fromAccountId")
     private WebElement fromAccountDropdown;
 
-    @FindBy(xpath = "//input[@value='Open New Account']")
+    @FindBy(xpath = "//input[@type='button']")
     private WebElement openAccountButton;
 
-    @FindBy(id = "newAccountId")
+    @FindBy(xpath = "//a[@id='newAccountId']")
     private WebElement newAccountId;
 
     @FindBy(xpath = "//h1[@class='title']")
     private WebElement pageTitle;
 
-    @FindBy(xpath = "//p[contains(text()," +
-        "'Congratulations')]")
+    @FindBy(xpath = "//p[contains(text(),'now open')]")
     private WebElement successMessage;
 
     public OpenAccountPage(WebDriver driver) {
@@ -47,20 +46,34 @@ public class OpenAccountPage extends BasePage {
     }
 
     public void clickOpenAccount() {
+        wait.until(ExpectedConditions
+            .elementToBeClickable(openAccountButton));
         click(openAccountButton);
     }
 
     public void openNewAccount(String accountType) {
         selectAccountType(accountType);
+        // Small wait for from account dropdown to load
+        wait.until(ExpectedConditions
+            .elementToBeClickable(fromAccountDropdown));
         clickOpenAccount();
     }
 
     public boolean isAccountOpenedSuccessfully() {
         try {
+            // First wait for success message text
             wait.until(ExpectedConditions
                 .visibilityOf(successMessage));
+
+            // Then wait for account ID link
+            wait.until(ExpectedConditions
+                .visibilityOf(newAccountId));
+
             return successMessage.isDisplayed();
         } catch (Exception e) {
+            System.out.println(
+                "Account creation failed: "
+                + e.getMessage());
             return false;
         }
     }

@@ -22,33 +22,30 @@ public class AccountTest extends BaseTest {
 
     // Test 1 — Open new checking account
     @Test(priority = 1,
-          description = "Verify opening a new " +
-                        "checking account",
-          retryAnalyzer = RetryAnalyser.class)
-    public void openCheckingAccountTest() {
-        AccountsPage accountsPage = loginToApplication();
-        accountsPage.clickOpenNewAccount();
+    	      description = "Verify opening a new checking account",
+    	      retryAnalyzer = RetryAnalyser.class)
+    	public void openCheckingAccountTest() {
+    	    AccountsPage accountsPage = loginToApplication();
+    	    accountsPage.clickOpenNewAccount();
 
-        OpenAccountPage openAccountPage =
-            new OpenAccountPage(driver);
-        openAccountPage.openNewAccount(
-            Constants.CHECKING);
+    	    OpenAccountPage openAccountPage =
+    	        new OpenAccountPage(driver);
+    	    openAccountPage.openNewAccount(Constants.CHECKING);
 
-        Assert.assertTrue(
-            openAccountPage.isAccountOpenedSuccessfully(),
-            "Checking account not opened successfully");
+    	    Assert.assertTrue(
+    	        openAccountPage.isAccountOpenedSuccessfully(),
+    	        "Checking account not opened successfully");
 
-        String newAccountId =
-            openAccountPage.getNewAccountId();
-        Assert.assertNotNull(newAccountId,
-            "New account ID is null");
-        Assert.assertFalse(newAccountId.isEmpty(),
-            "New account ID is empty");
+    	    String newAccountId =
+    	        openAccountPage.getNewAccountId();
+    	    Assert.assertNotNull(newAccountId,
+    	        "New account ID is null");
+    	    Assert.assertFalse(newAccountId.isEmpty(),
+    	        "New account ID is empty");
 
-        System.out.println(
-            "New checking account opened: "
-            + newAccountId);
-    }
+    	    System.out.println(
+    	        "New checking account opened: " + newAccountId);
+    	}
 
     // Test 2 — Open new savings account
     @Test(priority = 2,
