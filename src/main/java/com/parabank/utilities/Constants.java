@@ -52,6 +52,25 @@ public class Constants {
 	// Registration duplicate username
 	public static final String USERNAME_TAKEN_ERROR =
 	    "This username already exists.";
+	// Account types
+	public static final String CHECKING = "CHECKING";
+	public static final String SAVINGS = "SAVINGS";
+
+	// Account open success
+	public static final String ACCOUNT_OPENED_SUCCESS =
+	    "Congratulations, your account is now open.";
+
+	// Transfer success
+	public static final String TRANSFER_SUCCESS =
+	    "Transfer Complete!";
+
+	// Transfer amounts
+	public static final String VALID_TRANSFER_AMOUNT
+	    = "100.00";
+	public static final String ZERO_TRANSFER_AMOUNT
+	    = "0.00";
+	public static final String NEGATIVE_TRANSFER_AMOUNT
+	    = "-100.00";
 
 	// DB connection details — Parabank uses HSQLDB
 	public static final String DB_URL = "jdbc:hsqldb:hsql://parabank.parasoft.com/parabank";
