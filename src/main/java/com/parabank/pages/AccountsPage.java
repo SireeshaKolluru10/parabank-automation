@@ -4,6 +4,7 @@ import com.parabank.base.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class AccountsPage extends BasePage {
 
@@ -62,5 +63,11 @@ public class AccountsPage extends BasePage {
 
     public void logout() {
         click(logoutLink);
+    }
+    public void waitForPageToLoad() {
+        wait.until(ExpectedConditions
+            .visibilityOf(pageTitle));
+        wait.until(ExpectedConditions
+            .visibilityOf(openNewAccountLink));
     }
 }

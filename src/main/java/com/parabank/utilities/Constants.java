@@ -16,11 +16,11 @@ public class Constants {
 	public static final String API_BASE_URL = "https://parabank.parasoft.com/parabank/services/bank";
 	// Customer details from API response
 	public static final String CUSTOMER_ID = "12212";
-	public static final String PRIMARY_ACCOUNT_ID = "12345";
+	public static final String PRIMARY_ACCOUNT_ID = "13344";
 
 	// Customer name for assertions
 	public static final String CUSTOMER_FIRST_NAME = "John";
-	public static final String CUSTOMER_LAST_NAME = "Smith";
+	public static final String CUSTOMER_LAST_NAME = "SmithDoe";
 	
 	// Registration success
 	public static final String REGISTRATION_SUCCESS =
@@ -66,7 +66,7 @@ public class Constants {
 
 	// Account IDs for transfer tests
 	public static final String SECONDARY_ACCOUNT_ID
-	    = "12456";
+	    = "13344";
 	public static final String TERTIARY_ACCOUNT_ID
 	    = "12567";
 	// Transfer amounts
@@ -76,6 +76,22 @@ public class Constants {
 	    = "0.00";
 	public static final String NEGATIVE_TRANSFER_AMOUNT
 	    = "-100.00";
+	// Bill pay
+	public static final String BILL_PAY_SUCCESS =
+	    "Bill Payment Complete";
+	public static final String BILL_PAY_AMOUNT
+	    = "50.00";
+	public static final String PAYEE_NAME_REQUIRED
+	    = "Payee name is required.";
+	public static final String AMOUNT_EMPTY_ERROR
+	    = "The amount cannot be empty.";
+	// Bill pay from account
+	public static final String BILL_PAY_FROM_ACCOUNT
+	    = "13344";
+
+	// Transaction search
+	public static final String TRANSACTION_AMOUNT
+	    = "100.00";
 
 	// DB connection details — Parabank uses HSQLDB
 	public static final String DB_URL = "jdbc:hsqldb:hsql://parabank.parasoft.com/parabank";

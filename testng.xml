@@ -31,6 +31,18 @@
                 "com.parabank.tests.TransferFundsTest"/>
         </classes>
     </test>
+     <test name="Bill Pay Tests">
+        <classes>
+            <class name=
+                "com.parabank.tests.BillPayTest"/>
+        </classes>
+    </test>
+     <test name="Transaction Tests">
+        <classes>
+            <class name=
+                "com.parabank.tests.TransactionTest"/>
+        </classes>
+    </test>
 
     <test name="API Tests">
         <classes>

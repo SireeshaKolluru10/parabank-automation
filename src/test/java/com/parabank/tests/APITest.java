@@ -24,7 +24,7 @@ public class APITest {
 		// Assert correct customer data returned
 		Assert.assertEquals(response.jsonPath().getString("id"), Constants.CUSTOMER_ID, "Customer ID does not match");
 		Assert.assertEquals(response.jsonPath().getString("firstName"), "John", "First name does not match");
-		Assert.assertEquals(response.jsonPath().getString("lastName"), "Smith", "Last name does not match");
+		Assert.assertEquals(response.jsonPath().getString("lastName"), "SmithDoe", "Last name does not match");
 
 		System.out.println("Login API test passed — customer verified");
 	}

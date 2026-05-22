@@ -39,24 +39,24 @@ public class OpenAccountPage extends BasePage {
     }
 
     public void selectFromAccount(String accountId) {
-        wait.until(ExpectedConditions
-            .elementToBeClickable(fromAccountDropdown));
-        Select select = new Select(fromAccountDropdown);
-        select.selectByVisibleText(accountId);
+        // Wait until dropdown has options loaded, not just clickable
+        wait.until(driver -> {
+            Select s = new Select(fromAccountDropdown);
+            return s.getOptions().size() > 0;
+        });
+        new Select(fromAccountDropdown).selectByIndex(0); // pick first available account
+    }
+
+    public void openNewAccount(String accountType) {
+        selectAccountType(accountType);
+        selectFromAccount(accountType); // NOW actually waits for options and selects one
+        clickOpenAccount();
     }
 
     public void clickOpenAccount() {
         wait.until(ExpectedConditions
             .elementToBeClickable(openAccountButton));
         click(openAccountButton);
-    }
-
-    public void openNewAccount(String accountType) {
-        selectAccountType(accountType);
-        // Small wait for from account dropdown to load
-        wait.until(ExpectedConditions
-            .elementToBeClickable(fromAccountDropdown));
-        clickOpenAccount();
     }
 
     public boolean isAccountOpenedSuccessfully() {
