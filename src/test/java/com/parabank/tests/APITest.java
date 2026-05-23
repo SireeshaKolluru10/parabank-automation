@@ -23,8 +23,8 @@ public class APITest {
 
 		// Assert correct customer data returned
 		Assert.assertEquals(response.jsonPath().getString("id"), Constants.CUSTOMER_ID, "Customer ID does not match");
-		Assert.assertEquals(response.jsonPath().getString("firstName"), "John", "First name does not match");
-		Assert.assertEquals(response.jsonPath().getString("lastName"), "SmithDoe", "Last name does not match");
+		Assert.assertEquals(response.jsonPath().getString("firstName"),Constants.CUSTOMER_FIRST_NAME, "First name does not match");
+		Assert.assertEquals(response.jsonPath().getString("lastName"), Constants.CUSTOMER_LAST_NAME, "Last name does not match");
 
 		System.out.println("Login API test passed — customer verified");
 	}
@@ -57,4 +57,56 @@ public class APITest {
 
 		System.out.println("Invalid login API test passed — 400 received");
 	}
+	@Test(priority = 4,
+		      description = "Verify get account details " +
+		                    "API returns correct data",
+		      retryAnalyzer = RetryAnalyser.class)
+		public void verifyGetAccountDetailsAPI() {
+		    Response response = APIUtil.get(
+		        "/accounts/"
+		        + Constants.PRIMARY_ACCOUNT_ID);
+
+		    APIUtil.assertStatusCode(response, 200);
+
+		    // Assert account details
+		    Assert.assertEquals(
+		        response.jsonPath().getString("id"),
+		        Constants.PRIMARY_ACCOUNT_ID,
+		        "Account ID does not match");
+		    Assert.assertEquals(
+		        response.jsonPath().getString("customerId"),
+		        Constants.CUSTOMER_ID,
+		        "Customer ID does not match");
+		    Assert.assertNotNull(
+		        response.jsonPath().getString("type"),
+		        "Account type is null");
+		    Assert.assertNotNull(
+		        response.jsonPath().getString("balance"),
+		        "Balance is null");
+
+		    System.out.println("Account details: "
+		        + response.jsonPath().getString("type")
+		        + " — balance: "
+		        + response.jsonPath().getString("balance"));
+		}
+	@Test(priority = 5,
+		      description = "Verify customer has expected " +
+		                    "number of accounts",
+		      retryAnalyzer = RetryAnalyser.class)
+		public void verifyCustomerAccountsCountAPI() {
+		    Response response = APIUtil.get(
+		        "/customers/" + Constants.CUSTOMER_ID
+		        + "/accounts");
+
+		    APIUtil.assertStatusCode(response, 200);
+
+		    int accountCount = response.jsonPath()
+		        .getList("$").size();
+
+		    Assert.assertTrue(accountCount > 0,
+		        "Customer should have at least one account");
+
+		    System.out.println("Total accounts: "
+		        + accountCount);
+		}
 }

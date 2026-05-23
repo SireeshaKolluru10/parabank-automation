@@ -20,7 +20,7 @@ public class Constants {
 
 	// Customer name for assertions
 	public static final String CUSTOMER_FIRST_NAME = "John";
-	public static final String CUSTOMER_LAST_NAME = "SmithDoe";
+	public static final String CUSTOMER_LAST_NAME = "Smith";
 	
 	// Registration success
 	public static final String REGISTRATION_SUCCESS =
