@@ -40,6 +40,7 @@ https://parabank.parasoft.com
 
 ## Framework Architecture
 
+```
 Hybrid Framework — POM + Data Driven
 ├── Base Layer
 │   ├── BaseTest    — driver setup and teardown
@@ -50,19 +51,18 @@ Hybrid Framework — POM + Data Driven
 ├── Tests Layer
 │   ├── Test classes organised by feature
 │   └── All extend BaseTest
-├── Utilities Layer
-│   ├── ConfigReader    — config management
-│   ├── FakerUtil       — dynamic test data
-│   ├── APIUtil         — REST Assured wrapper
-│   ├── DBUtil          — JDBC DB utility
-│   ├── ExtentReportManager — HTML reporting
-│   ├── ScreenshotUtil  — failure screenshots
-│   └── RetryAnalyser   — flaky test handler
-└── Listeners Layer
-└── TestListener — auto reporting and screenshots
+└── Utilities Layer
+    ├── ConfigReader    — config management
+    ├── FakerUtil       — dynamic test data
+    ├── APIUtil         — REST Assured wrapper
+    ├── ExtentReportManager — HTML reporting
+    ├── ScreenshotUtil  — failure screenshots
+    └── RetryAnalyser   — flaky test handler
+```
 
 ## Project Structure
 
+```
 parabank-automation/
 ├── src/main/java/
 │   ├── com.parabank.base/
@@ -80,8 +80,7 @@ parabank-automation/
 ├── .github/workflows/ci.yml
 ├── BugReport.md
 └── testng.xml
-
----
+```
 
 ## Test Scenarios Covered
 
@@ -168,8 +167,7 @@ every push to main branch.
 7. Upload screenshots on failure
 
 View pipeline runs:
-https://github.com/SireeeshaKolluru10/
-parabank-automation/actions
+https://github.com/SireeeshaKolluru10/parabank-automation/actions
 
 ---
 
