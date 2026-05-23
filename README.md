@@ -1,6 +1,6 @@
 # Parabank Automation Framework
 
-![CI](https://github.com/SireeeshaKolluru10/parabank-automation/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/SireeshaKolluru10/parabank-automation/actions/workflows/ci.yml/badge.svg)
 ![Java](https://img.shields.io/badge/Java-17-orange)
 ![Selenium](https://img.shields.io/badge/Selenium-4.18.1-green)
 ![TestNG](https://img.shields.io/badge/TestNG-7.9.0-red)
@@ -120,7 +120,7 @@ Eclipse or IntelliJ IDE
 
 **Clone the repository:**
 ```bash
-git clone https://github.com/SireeeshaKolluru10/parabank-automation.git
+git clone https://github.com/SireeshaKolluru10/parabank-automation.git
 cd parabank-automation
 ```
 
