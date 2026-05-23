@@ -1,4 +1,4 @@
-
+# Parabank Automation Framework
 
 ![CI](https://github.com/SireeeshaKolluru10/parabank-automation/actions/workflows/ci.yml/badge.svg)
 ![Java](https://img.shields.io/badge/Java-17-orange)
@@ -11,9 +11,14 @@
 
 ## About the Project
 
-A **Hybrid Test Automation Framework** built from scratch for the Parabank banking application. Covers UI automation, REST API testing, and cross-layer validation using industry standard tools and design patterns.
+A **Hybrid Test Automation Framework** built from 
+scratch for the Parabank banking application. 
+Covers UI automation, REST API testing, and 
+cross-layer validation using industry standard 
+tools and design patterns.
 
-**Application under test:** https://parabank.parasoft.com
+**Application under test:**
+https://parabank.parasoft.com
 
 ---
 
@@ -34,6 +39,8 @@ A **Hybrid Test Automation Framework** built from scratch for the Parabank banki
 ---
 
 ## Framework Architecture
+
+```
 Hybrid Framework — POM + Data Driven
 ├── Base Layer
 │   ├── BaseTest    — driver setup and teardown
@@ -44,20 +51,18 @@ Hybrid Framework — POM + Data Driven
 ├── Tests Layer
 │   ├── Test classes organised by feature
 │   └── All extend BaseTest
-├── Utilities Layer
-│   ├── ConfigReader    — config management
-│   ├── FakerUtil       — dynamic test data
-│   ├── APIUtil         — REST Assured wrapper
-│   ├── DBUtil          — JDBC DB utility
-│   ├── ExtentReportManager — HTML reporting
-│   ├── ScreenshotUtil  — failure screenshots
-│   └── RetryAnalyser   — flaky test handler
-└── Listeners Layer
-└── TestListener — auto reporting and screenshots
-
----
+└── Utilities Layer
+    ├── ConfigReader    — config management
+    ├── FakerUtil       — dynamic test data
+    ├── APIUtil         — REST Assured wrapper
+    ├── ExtentReportManager — HTML reporting
+    ├── ScreenshotUtil  — failure screenshots
+    └── RetryAnalyser   — flaky test handler
+```
 
 ## Project Structure
+
+```
 parabank-automation/
 ├── src/main/java/
 │   ├── com.parabank.base/
@@ -75,8 +80,7 @@ parabank-automation/
 ├── .github/workflows/ci.yml
 ├── BugReport.md
 └── testng.xml
-
----
+```
 
 ## Test Scenarios Covered
 
@@ -104,11 +108,11 @@ parabank-automation/
 ---
 
 ## Prerequisites
-
-- Java 17+
-- Maven 3.x
-- Chrome browser
-- Eclipse or IntelliJ IDE
+---
+Java 17+
+Maven 3.x
+Chrome browser
+Eclipse or IntelliJ IDE
 
 ---
 
@@ -140,16 +144,18 @@ mvn test -Dtest=LoginTest
 ## Test Reports
 
 After test execution find reports here:
+
 reports/AutomationReport.html  — Extent HTML report
 screenshots/                   — Failure screenshots
-
-Open `AutomationReport.html` in any browser to view detailed results with pass/fail status and screenshots.
+Open `AutomationReport.html` in any browser to view 
+detailed results with pass/fail status and screenshots.
 
 ---
 
 ## CI/CD Pipeline
 
-GitHub Actions pipeline triggers automatically on every push to main branch.
+GitHub Actions pipeline triggers automatically on 
+every push to main branch.
 
 **Pipeline steps:**
 1. Checkout code
@@ -160,7 +166,8 @@ GitHub Actions pipeline triggers automatically on every push to main branch.
 6. Upload Extent Report as artifact
 7. Upload screenshots on failure
 
-View pipeline runs: https://github.com/SireeeshaKolluru10/parabank-automation/actions
+View pipeline runs:
+https://github.com/SireeeshaKolluru10/parabank-automation/actions
 
 ---
 
@@ -194,3 +201,9 @@ QA Automation Engineer
 - Professional HTML reports with dark theme
 - Cross-layer validation — UI + API + DB
 - Real defect found and documented
+
+
+
+
+
+
