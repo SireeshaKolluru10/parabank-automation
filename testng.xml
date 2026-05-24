@@ -43,6 +43,12 @@
                 "com.parabank.tests.TransactionTest"/>
         </classes>
     </test>
+      <test name="Cross Layer Tests">
+        <classes>
+            <class name=
+                "com.parabank.tests.CrossLayerTest"/>
+        </classes>
+    </test>
 
     <test name="API Tests">
         <classes>
