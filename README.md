@@ -188,7 +188,7 @@ See [BugReport.md](BugReport.md) for documented defects.
 **Sireesha Kolluru**
 QA Automation Engineer
 [LinkedIn](https://www.linkedin.com/in/sireesha-kolluru-554988181/)
-[GitHub](https://github.com/SireeeshaKolluru10)
+[GitHub](https://github.com/SireeshaKolluru10)
 
 ---
 
