@@ -168,7 +168,7 @@ every push to main branch.
 7. Upload screenshots on failure
 
 View pipeline runs:
-https://github.com/SireeeshaKolluru10/parabank-automation/actions
+https://github.com/SireeshaKolluru10/parabank-automation/actions
 
 ---
 
