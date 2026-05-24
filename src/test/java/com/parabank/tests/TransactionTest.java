@@ -13,68 +13,55 @@ public class TransactionTest extends BaseTest {
 
     private AccountsPage loginToApplication() {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login(
-            Constants.VALID_USERNAME,
-            Constants.VALID_PASSWORD);
-        AccountsPage accountsPage =
-            new AccountsPage(driver);
+        loginPage.login(Constants.VALID_USERNAME, Constants.VALID_PASSWORD);
+        AccountsPage accountsPage = new AccountsPage(driver);
         accountsPage.waitForPageToLoad();
         return accountsPage;
     }
 
-    @Test(priority = 1,
-          description = "Verify find transactions " +
-                        "by amount returns results",
-          retryAnalyzer = RetryAnalyser.class)
+    @Test(
+        priority = 1,
+        description = "Verify find transactions by amount returns results",
+        retryAnalyzer = RetryAnalyser.class
+    )
     public void findTransactionsByAmountTest() {
-        AccountsPage accountsPage =
-            loginToApplication();
+        AccountsPage accountsPage = loginToApplication();
         accountsPage.clickFindTransactions();
 
-        TransactionPage transactionPage =
-            new TransactionPage(driver);
-
+        TransactionPage transactionPage = new TransactionPage(driver);
         transactionPage.findTransactionsByAmount(
             Constants.PRIMARY_ACCOUNT_ID,
-            Constants.TRANSACTION_AMOUNT);
+            Constants.TRANSACTION_AMOUNT
+        );
 
         Assert.assertTrue(
-            transactionPage
-                .isTransactionTableDisplayed(),
-            "Transaction table not displayed");
-
-        int count = transactionPage
-            .getTransactionCount();
-        Assert.assertTrue(count > 0,
-            "No transactions found for amount "
-            + Constants.TRANSACTION_AMOUNT);
-
-        System.out.println(
-            "Transactions found: " + count);
+            transactionPage.isTransactionTableDisplayed(),
+            "Transaction table not displayed"
+        );
+        Assert.assertTrue(
+            transactionPage.getTransactionCount() > 0,
+            "No transactions found for amount: " + Constants.TRANSACTION_AMOUNT
+        );
     }
 
-    @Test(priority = 2,
-          description = "Verify no results for " +
-                        "invalid transaction amount",
-          retryAnalyzer = RetryAnalyser.class)
+    @Test(
+        priority = 2,
+        description = "Verify no results returned for an invalid transaction amount",
+        retryAnalyzer = RetryAnalyser.class
+    )
     public void findTransactionsInvalidAmountTest() {
-        AccountsPage accountsPage =
-            loginToApplication();
+        AccountsPage accountsPage = loginToApplication();
         accountsPage.clickFindTransactions();
 
-        TransactionPage transactionPage =
-            new TransactionPage(driver);
-
+        TransactionPage transactionPage = new TransactionPage(driver);
         transactionPage.findTransactionsByAmount(
             Constants.PRIMARY_ACCOUNT_ID,
-            "99999.99");
+            "99999.99"
+        );
 
         Assert.assertTrue(
             transactionPage.isTransactionBodyEmpty(),
-            "Transactions should not be found " +
-            "for invalid amount");
-
-        System.out.println(
-            "No transactions found — correct");
+            "Transactions should not be found for invalid amount"
+        );
     }
 }

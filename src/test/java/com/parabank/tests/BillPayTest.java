@@ -14,29 +14,24 @@ public class BillPayTest extends BaseTest {
 
     private AccountsPage loginToApplication() {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login(
-            Constants.VALID_USERNAME,
-            Constants.VALID_PASSWORD);
-        AccountsPage accountsPage =
-            new AccountsPage(driver);
+        loginPage.login(Constants.VALID_USERNAME, Constants.VALID_PASSWORD);
+        AccountsPage accountsPage = new AccountsPage(driver);
         accountsPage.waitForPageToLoad();
         return accountsPage;
     }
 
-    @Test(priority = 1,
-          description = "Verify successful bill payment",
-          retryAnalyzer = RetryAnalyser.class)
+    @Test(
+        priority = 1,
+        description = "Verify successful bill payment",
+        retryAnalyzer = RetryAnalyser.class
+    )
     public void validBillPayTest() {
-        AccountsPage accountsPage =
-            loginToApplication();
+        AccountsPage accountsPage = loginToApplication();
         accountsPage.clickBillPay();
 
-        BillPayPage billPayPage =
-            new BillPayPage(driver);
-
+        BillPayPage billPayPage = new BillPayPage(driver);
         billPayPage.payBill(
-        		FakerUtil.getFirstName()
-                + " " + FakerUtil.getLastName(),
+            FakerUtil.getFirstName() + " " + FakerUtil.getLastName(),
             FakerUtil.getAddress(),
             FakerUtil.getCity(),
             FakerUtil.getState(),
@@ -44,39 +39,35 @@ public class BillPayTest extends BaseTest {
             FakerUtil.getPhone(),
             Constants.SECONDARY_ACCOUNT_ID,
             Constants.BILL_PAY_AMOUNT,
-            Constants.BILL_PAY_FROM_ACCOUNT);
+            Constants.BILL_PAY_FROM_ACCOUNT
+        );
 
         Assert.assertTrue(
             billPayPage.isBillPaySuccessful(),
-            "Bill payment was not successful");
-
-        System.out.println(
-            "Bill payment successful — "
-            + Constants.BILL_PAY_AMOUNT);
+            "Bill payment was not successful"
+        );
     }
 
-    @Test(priority = 2,
-          description = "Verify errors for empty " +
-                        "bill pay form",
-          retryAnalyzer = RetryAnalyser.class)
+    @Test(
+        priority = 2,
+        description = "Verify validation errors on empty bill pay form",
+        retryAnalyzer = RetryAnalyser.class
+    )
     public void emptyBillPayTest() {
-        AccountsPage accountsPage =
-            loginToApplication();
+        AccountsPage accountsPage = loginToApplication();
         accountsPage.clickBillPay();
 
-        BillPayPage billPayPage =
-            new BillPayPage(driver);
+        BillPayPage billPayPage = new BillPayPage(driver);
         billPayPage.clickSendPayment();
 
         Assert.assertTrue(
             billPayPage.isPayeeNameErrorDisplayed(),
-            "Payee name error not displayed");
+            "Payee name error not displayed"
+        );
         Assert.assertEquals(
             billPayPage.getPayeeNameError(),
             Constants.PAYEE_NAME_REQUIRED,
-            "Payee name error text mismatch");
-
-        System.out.println(
-            "Empty bill pay validation passed");
+            "Payee name error text mismatch"
+        );
     }
 }

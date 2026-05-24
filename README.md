@@ -84,7 +84,7 @@ parabank-automation/
 
 ## Test Scenarios Covered
 
-### UI Tests — 15 scenarios
+### UI Tests — 17 scenarios
 
 | Module | Scenarios |
 |---|---|
@@ -94,18 +94,19 @@ parabank-automation/
 | Transfer Funds | Valid transfer, empty amount |
 | Bill Pay | Valid bill payment, empty form validation |
 | Transactions | Find by amount, invalid amount search |
+| Cross Layer | Register via UI verify via API, Transfer via UI verify via API |
 
 ### API Tests — 5 scenarios
 
 | Scenario | Assertion |
 |---|---|
-| Login API | Status 200, customer ID, name verified |
+| Login API | Status 200, customer ID, name verified, response time |
 | Get accounts | Status 200, account count > 0 |
 | Invalid login | Status 400 |
 | Get account details | Account type and balance not null |
 | Customer accounts count | At least one account exists |
 
----
+### Total — 22 test scenarios
 
 ## Prerequisites
 ---
@@ -194,14 +195,15 @@ QA Automation Engineer
 ## Key Highlights
 
 - Built from scratch — no tutorial code
+- 22 automated test scenarios across 8 modules
 - Dynamic test data using Java Faker
 - Auto screenshot capture on test failure
 - Retry mechanism for flaky tests
 - GitHub Actions CI pipeline
 - Professional HTML reports with dark theme
-- Cross-layer validation — UI + API + DB
-- Real defect found and documented
-
+- Cross layer validation — UI action verified via API
+- Real defect found and documented — BugReport.md
+- Response time assertions on API tests
 
 
 

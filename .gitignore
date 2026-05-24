@@ -7,3 +7,9 @@ target/
 .project
 .settings/
 test-output/
+logs/*
+!logs/.gitkeep
+reports/*
+!reports/.gitkeep
+screenshots/*
+!screenshots/.gitkeep

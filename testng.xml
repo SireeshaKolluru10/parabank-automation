@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Parabank Automation Suite" verbose="1">
-
+<suite name="Parabank Banking Application — Hybrid Automation Suite"
+       verbose="1"
+       time-out="120000">
     <listeners>
         <listener class-name=
             "com.parabank.listeners.TestListener"/>
