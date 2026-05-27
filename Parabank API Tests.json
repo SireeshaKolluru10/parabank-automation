@@ -1,0 +1,268 @@
+{
+	"info": {
+		"_postman_id": "28d786f4-4d67-4906-a71f-cdda3ad5c5ad",
+		"name": "Parabank API Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "42424113"
+	},
+	"item": [
+		{
+			"name": "Login API",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var responseXml = xml2Json(pm.response.text());\r",
+							"\r",
+							"pm.test(\"Customer ID is correct\", function () {\r",
+							"    pm.expect(Number(responseXml.customer.id))\r",
+							"        .to.eql(12212);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"First name is John\", function () {\r",
+							"    pm.expect(responseXml.customer.firstName)\r",
+							"        .to.eql(\"John\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 10 seconds\", function () {\r",
+							"    pm.expect(pm.response.responseTime)\r",
+							"        .to.be.below(10000);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://parabank.parasoft.com/parabank/services/bank/login/john/demo",
+					"protocol": "https",
+					"host": [
+						"parabank",
+						"parasoft",
+						"com"
+					],
+					"path": [
+						"parabank",
+						"services",
+						"bank",
+						"login",
+						"john",
+						"demo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Customer Accounts",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var responseXml = xml2Json(pm.response.text());\r",
+							"\r",
+							"pm.test(\"At least one account exists\", function () {\r",
+							"    pm.expect(responseXml.accounts.account)\r",
+							"        .to.not.be.empty;\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://parabank.parasoft.com/parabank/services/bank/customers/12212/accounts",
+					"protocol": "https",
+					"host": [
+						"parabank",
+						"parasoft",
+						"com"
+					],
+					"path": [
+						"parabank",
+						"services",
+						"bank",
+						"customers",
+						"12212",
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Account Details",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xmlData = xml2Json(pm.response.text());\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Account ID is correct\", function () {\r",
+							"    pm.expect(Number(xmlData.account.id))\r",
+							"        .to.eql(12345);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Account type is not null\", function () {\r",
+							"    pm.expect(xmlData.account.type)\r",
+							"        .to.not.be.null;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Balance is not null\", function () {\r",
+							"    pm.expect(xmlData.account.balance)\r",
+							"        .to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://parabank.parasoft.com/parabank/services/bank/accounts/12345",
+					"protocol": "https",
+					"host": [
+						"parabank",
+						"parasoft",
+						"com"
+					],
+					"path": [
+						"parabank",
+						"services",
+						"bank",
+						"accounts",
+						"12345"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Account Transactions",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var xmlData = xml2Json(pm.response.text());\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Transactions list is not empty\", function () {\r",
+							"    pm.expect(xmlData.transactions.transaction.length)\r",
+							"        .to.be.above(0);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"First transaction has amount field\", function () {\r",
+							"    pm.expect(xmlData.transactions.transaction[0].amount)\r",
+							"        .to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://parabank.parasoft.com/parabank/services/bank/accounts/12345/transactions",
+					"protocol": "https",
+					"host": [
+						"parabank",
+						"parasoft",
+						"com"
+					],
+					"path": [
+						"parabank",
+						"services",
+						"bank",
+						"accounts",
+						"12345",
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Invalid Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Invalid login returns error status\",\r",
+							"function () {\r",
+							"    pm.expect(pm.response.code).to.not.equal(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status is 400 or 500\", function () {\r",
+							"    pm.expect(pm.response.code)\r",
+							"        .to.be.oneOf([400, 500]);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://parabank.parasoft.com/parabank/services/bank/login/wronguser/wrongpass",
+					"protocol": "https",
+					"host": [
+						"parabank",
+						"parasoft",
+						"com"
+					],
+					"path": [
+						"parabank",
+						"services",
+						"bank",
+						"login",
+						"wronguser",
+						"wrongpass"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
